@@ -7,3 +7,11 @@
 用法: 
 cp /etc/hosts hosts.j2
 sudo ./httpdns.sh 
+
+
+#todo
+
+#curl http://$MARATHON_LEADER:8123/v1/hosts/{jenkins.devops.marathon.mesos,nginx.marathon.mesos}
+#把curl命令修改为批量执行方式
+#? 可以传多少个域名参数?
+

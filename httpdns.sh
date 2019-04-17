@@ -56,8 +56,11 @@ do
             app_domain="${app_domain}.marathon.mesos"
             #row_host_record=$(curl http://10.2.1.71:8123/v1/hosts/jenkins.devops.marathon.mesos | jq .[] | jq  '(.ip +" "+ .host)')
             ip=$(curl --silent http://${MARATHON_LEADER}:8123/v1/hosts/${app_domain} | jq .[] | jq  '.ip' | tr '"' " ")
-            row_host_record="${ip}  ${app_domain}"
-            echo $row_host_record >> temp_hosts_latest.txt
+            if [[ ! -z "$ip" ]];
+            then
+                row_host_record="${ip}  ${app_domain}"
+                echo $row_host_record >> temp_hosts_latest.txt
+            fi
        done
 
        #判断过去的时间里是否有变化。
